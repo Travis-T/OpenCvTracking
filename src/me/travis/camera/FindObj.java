@@ -10,6 +10,17 @@ import java.util.List;
 
 public class FindObj {
 
+    private FindObj() {}
+
+    /**
+     * Coverts the image to a HSV image to make the colors easier to reade, then gets the colors in the green range, eroding the image twice to get rid of stray pixels,
+     * then dilating it twice to fix the sizes of objects, then finds the outlines of white squares, then finally taking the largest square and drawing a contour around it.
+     *
+     * @param mat
+     * @param minRGB
+     * @param maxRGB
+     * @return
+     */
     public static Mat findLargestGreenObj(Mat mat, RGBValue minRGB, RGBValue maxRGB) {
         List<MatOfPoint> contours = new ArrayList<>();
         Mat uneditedFrame = mat;
